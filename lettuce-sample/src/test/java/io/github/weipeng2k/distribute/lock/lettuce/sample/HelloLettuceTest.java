@@ -10,17 +10,17 @@ import org.junit.Test;
 /**
  * @author weipeng2k 2021年10月30日 下午13:17:11
  */
-public class HelloLettuce {
+public class HelloLettuceTest {
 
     @Test
     public void set() {
-        RedisClient redisClient = RedisClient.create("redis://1.117.164.80:6379");
+        RedisClient redisClient = RedisClient.create("redis://weipeng2k-workstation:6379");
         // 创建链接，该链接线程安全
         StatefulRedisConnection<String, String> connection = redisClient.connect();
         // 同步执行RedisCommand
         RedisCommands<String, String> syncCommands = connection.sync();
 
-        String key = syncCommands.set("key", "Hello, Redis!");
+        String key = syncCommands.set("key", "Hello, Redis!!");
 
         Assert.assertEquals("OK", key);
 
@@ -31,7 +31,7 @@ public class HelloLettuce {
     @Test
     public void get() {
         RedisURI redisURI = RedisURI.builder()
-                .withHost("1.117.164.80")
+                .withHost("weipeng2k-workstation")
                 .withPort(6379)
                 .build();
         RedisClient redisClient = RedisClient.create(redisURI);
